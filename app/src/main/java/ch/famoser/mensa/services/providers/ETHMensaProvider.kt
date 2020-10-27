@@ -187,7 +187,9 @@ class ETHMensaProvider(
         var descriptionLines = apiMeal.description
         if (label.isEmpty() && apiMeal.description.isNotEmpty()) {
             label = apiMeal.description.first()
-            descriptionLines = descriptionLines.subList(1, descriptionLines.size - 1)
+            if (descriptionLines.size > 1) {
+                descriptionLines = descriptionLines.subList(1, descriptionLines.size - 1)
+            }
         }
 
         val description = normalizeText(descriptionLines.joinToString(separator = "\n").trim())
